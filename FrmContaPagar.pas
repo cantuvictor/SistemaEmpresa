@@ -68,6 +68,8 @@ type
     procedure LimparCampos;
     procedure PreencherCampos(AId: Integer);
     procedure PreencherParcelas(AConta: TContaPagar);
+    procedure FormatarCampoMoeda(AEdit: TEdit);
+    procedure edtValorExit(Sender: TObject);
     function ObterContaDaTela: TContaPagar;
     function ValidarCampos: Boolean;
     function ValidarParcelas: Boolean;
@@ -147,13 +149,23 @@ procedure TFrmContaPagar.FormCreate(Sender: TObject);
 begin
   FIdSelecionado := 0;
   FController := TControllerContaPagar.Create;
+
   dtpEmissao.Date := Now;
   dtpFiltroEmissaoDe.Date := Now;
   dtpFiltroEmissaoAte.Date := Now;
+
   ConfigurarGridParcelas;
   ConfigurarGridContas;
   CarregarFornecedores;
   CarregarGrid;
+
+  edtValorTotal.OnKeyPress := ApenasValorKeyPress;
+  edtFiltroValorDe.OnKeyPress := ApenasValorKeyPress;
+  edtFiltroValorAte.OnKeyPress := ApenasValorKeyPress;
+
+  edtValorTotal.OnExit := edtValorExit;
+  edtFiltroValorDe.OnExit := edtValorExit;
+  edtFiltroValorAte.OnExit := edtValorExit;
 end;
 
 procedure TFrmContaPagar.ConfigurarGridParcelas;
@@ -327,6 +339,19 @@ begin
   finally
     conta.Free;
   end;
+end;
+
+procedure TFrmContaPagar.FormatarCampoMoeda(AEdit: TEdit);
+var
+  dValor: Double;
+begin
+  dValor := StrToFloatDef2(AEdit.Text);
+  AEdit.Text := FormatarReais(dValor);
+end;
+
+procedure TFrmContaPagar.edtValorExit(Sender: TObject);
+begin
+  FormatarCampoMoeda(TEdit(Sender));
 end;
 
 function TFrmContaPagar.ObterContaDaTela: TContaPagar;

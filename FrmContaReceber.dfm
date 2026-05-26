@@ -12,6 +12,7 @@ object FormContaReceber: TFormContaReceber
   Font.Name = 'Segoe UI'
   Font.Style = []
   Position = poScreenCenter
+  OnCreate = FormCreate
   TextHeight = 15
   object pnlCabecalho: TPanel
     Left = 0
@@ -90,9 +91,10 @@ object FormContaReceber: TFormContaReceber
     end
     object cmbCliente: TComboBox
       Left = 8
-      Top = 132
+      Top = 135
       Width = 465
       Height = 23
+      Style = csDropDownList
       TabOrder = 2
     end
     object chkFinalizada: TCheckBox

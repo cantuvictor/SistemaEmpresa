@@ -210,14 +210,16 @@ begin
   qry := TFDQuery.Create(nil);
   try
     qry.Connection := DM.FDConnection1;
-    qry.SQL.Text := StrSqlBuscarClientes;
+    qry.SQL.Text := 'SELECT ID_PESSOA, NOME, TIPO FROM PESSOA ORDER BY NOME';
     qry.Open;
 
     while not qry.Eof do
     begin
-      cmbCliente.Items.AddObject(
-        qry.FieldByName('NOME').AsString,
-        TObject(qry.FieldByName('ID_PESSOA').AsInteger));
+      if (qry.FieldByName('TIPO').AsString = 'C') or
+         (qry.FieldByName('TIPO').AsString = 'A') then
+        cmbCliente.Items.AddObject(
+          qry.FieldByName('NOME').AsString,
+          TObject(qry.FieldByName('ID_PESSOA').AsInteger));
       qry.Next;
     end;
 
