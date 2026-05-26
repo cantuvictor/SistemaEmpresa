@@ -143,6 +143,7 @@ object FormContaReceber: TFormContaReceber
       Height = 30
       Caption = '+ Adicionar Parcela'
       TabOrder = 1
+      OnClick = btnAddParcelaClick
     end
   end
   object pnlBotoes: TPanel
@@ -154,12 +155,13 @@ object FormContaReceber: TFormContaReceber
     TabOrder = 2
     object btnNovo: TButton
       Tag = 8
-      Left = 267
+      Left = 262
       Top = 19
       Width = 123
       Height = 39
       Caption = 'Novo'
       TabOrder = 0
+      OnClick = btnNovoClick
     end
     object btnExcluir: TButton
       Tag = 8
@@ -169,6 +171,7 @@ object FormContaReceber: TFormContaReceber
       Height = 39
       Caption = 'Excluir'
       TabOrder = 1
+      OnClick = btnExcluirClick
     end
     object btnCancelar: TButton
       Tag = 8
@@ -178,6 +181,7 @@ object FormContaReceber: TFormContaReceber
       Height = 39
       Caption = 'Cancelar'
       TabOrder = 2
+      OnClick = btnCancelarClick
     end
     object btnFinalizar: TButton
       Tag = 8
@@ -187,6 +191,7 @@ object FormContaReceber: TFormContaReceber
       Height = 39
       Caption = 'Finalizar'
       TabOrder = 3
+      OnClick = btnFinalizarClick
     end
     object btnSalvar: TButton
       Tag = 8
@@ -196,6 +201,7 @@ object FormContaReceber: TFormContaReceber
       Height = 39
       Caption = 'Salvar'
       TabOrder = 4
+      OnClick = btnSalvarClick
     end
   end
   object pnlConsulta: TPanel
@@ -208,7 +214,7 @@ object FormContaReceber: TFormContaReceber
     object lblFiltroEmissaoDe: TLabel
       Left = 12
       Top = 32
-      Width = 70
+      Width = 60
       Height = 15
       Caption = 'Emiss'#227'o De'
     end
@@ -306,9 +312,10 @@ object FormContaReceber: TFormContaReceber
       Height = 23
       Caption = 'Buscar'
       TabOrder = 5
+      OnClick = btnBuscarClick
     end
     object grdContas: TStringGrid
-      Left = 12
+      Left = 8
       Top = 141
       Width = 917
       Height = 91
