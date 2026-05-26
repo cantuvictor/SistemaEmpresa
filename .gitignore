@@ -1,0 +1,9 @@
+*.dcu
+*.exe
+*.local
+*.identcache
+*.deployproj
+__history/
+Win32/
+Win64/
+financeiro.db
